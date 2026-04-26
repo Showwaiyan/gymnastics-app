@@ -24,7 +24,12 @@ class Gymnastics {
         currentElement++
         return PerformResult(true, zone, currentElement > 10)
     }
-    fun applyDeduction(): Boolean { TODO() }
+    fun applyDeduction(): Boolean {
+        if (currentElement == 1 || isDeductionTaken) return false
+        score = (score-2).coerceAtLeast(0)
+        isDeductionTaken = true
+        return true
+    }
     fun reset() {
         score = 0
         currentElement = 1
