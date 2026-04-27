@@ -21,11 +21,11 @@ class Gymnastics {
         if (isDeductionTaken || zone == null) return PerformResult(false, null, false)
 
         score = (score+zone.points).coerceAtMost(20)
-        currentElement++
-        return PerformResult(true, zone, currentElement > 10)
+        currentElement = (currentElement+1).coerceAtMost(10)
+        return PerformResult(true, zone, currentElement == 10 && score == 20)
     }
     fun applyDeduction(): Boolean {
-        if (currentElement == 1 || isDeductionTaken) return false
+        if (currentElement == 1 || isDeductionTaken || score == 20) return false
         score = (score-2).coerceAtLeast(0)
         isDeductionTaken = true
         return true

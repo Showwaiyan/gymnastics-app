@@ -57,17 +57,21 @@ class GymnasticsTest {
 
     @Test
     fun `score doesn't exceed max of 20`() {
-        // Loop up to 10 elements (which is max per rules)
+        // Perform elements 1-10
         for (i in 1..10) {
-            gymnastics.perform()
+            val result = gymnastics.perform()
+            assertTrue("Element $i should succeed", result.success)
         }
-        
-        assertTrue("Score should not exceed 20", gymnastics.score <= 20)
-        
-        // Let's force an extra perform if possible, to test bounds
+
+        // Score is capped at 20, currentElement is capped at 10
+        assertEquals(20, gymnastics.score)
+        assertEquals(10, gymnastics.currentElement)
+
+        // 11th perform still succeeds because currentElement stays at 10 (ADVANCED zone)
         val result = gymnastics.perform()
-        assertFalse("Should fail to perform past 10 elements", result.success)
-        assertNull(result.zone)
+        assertTrue("Still succeeds — coerceAtMost keeps element at 10", result.success)
+        assertEquals(Zone.ADVANCED, result.zone)
+        assertEquals(20, gymnastics.score) // Score stays at 20
     }
 
     @Test
