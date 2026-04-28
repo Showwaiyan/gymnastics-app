@@ -1,130 +1,306 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#F5F5F5"
+    android:paddingHorizontal="16dp"
+    android:paddingVertical="10dp"
+    tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView7"
+    <!-- ════ GUIDELINES ════ -->
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineCol1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Applogo"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.26" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineCol2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.70" />
+
+    <!-- ════ HEADER ════ -->
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:src="@android:drawable/ic_menu_compass"
+        app:tint="#1565C0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvElement"
+        android:id="@+id/tvAppName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:text="GymScore Pro"
+        android:textColor="#1565C0"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/ivLogo"
+        app:layout_constraintEnd_toStartOf="@id/guidelineCol1"
+        app:layout_constraintTop_toTopOf="@id/ivLogo"
+        app:layout_constraintBottom_toBottomOf="@id/ivLogo" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardElement"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Element Score"
+        app:cardBackgroundColor="#E0E0E0"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/tvElement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="5dp"
+            android:text="Element 1 / 10"
+            android:textColor="#424242"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.08"
+            tools:text="ELEMENT 3 / 10" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- ════ LEFT — Score Circle ════ -->
+
+    <View
+        android:id="@+id/scoreCircle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/circle_border_blue"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guidelineCol1"
+        app:layout_constraintTop_toBottomOf="@id/ivLogo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.4" />
 
     <TextView
         android:id="@+id/tvScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="136dp"
-        android:text="Score"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.394" />
+        android:text="0"
+        android:textColor="#1565C0"
+        android:textSize="52sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@id/scoreCircle"
+        app:layout_constraintBottom_toBottomOf="@id/scoreCircle"
+        app:layout_constraintStart_toStartOf="@id/scoreCircle"
+        app:layout_constraintEnd_toEndOf="@id/scoreCircle"
+        tools:text="6" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="120dp"
-        android:layout_marginTop="68dp"
-        android:text="Max Score"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvScore"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/tvComplete"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="148dp"
-        android:text="Complete"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textView9"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardDeductionBadge"
         android:layout_width="60dp"
-        android:layout_height="18dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginEnd="284dp"
-        android:text="Difficulity"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_height="26dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="#C62828"
+        app:cardCornerRadius="13dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toBottomOf="@id/scoreCircle"
+        app:layout_constraintStart_toStartOf="@id/scoreCircle"
+        app:layout_constraintEnd_toEndOf="@id/scoreCircle"
+        tools:visibility="visible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="-0.5"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tvMaxPts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="MAX: 20 PTS"
+        android:textColor="#757575"
+        android:textSize="11sp"
+        android:letterSpacing="0.08"
+        app:layout_constraintTop_toBottomOf="@id/scoreCircle"
+        app:layout_constraintStart_toStartOf="@id/scoreCircle"
+        app:layout_constraintEnd_toEndOf="@id/scoreCircle" />
+
+    <!-- ════ CENTER — Difficulty + Complete ════ -->
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:letterSpacing="0.12"
+        android:text="DIFFICULTY LEVEL"
+        android:textColor="#424242"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/guidelineCol1"
+        app:layout_constraintEnd_toStartOf="@id/guidelineCol2"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvZoneEasy"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/difficultySelector"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="280dp"
-        android:text="Zone Easy"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/bg_rounded_border"
+        android:orientation="horizontal"
+        android:padding="4dp"
+        app:layout_constraintStart_toStartOf="@id/guidelineCol1"
+        app:layout_constraintEnd_toStartOf="@id/guidelineCol2"
+        app:layout_constraintTop_toBottomOf="@id/textView4">
 
-    <TextView
-        android:id="@+id/tvZoneIntermediate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Intermediate"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.255"
-        app:layout_constraintStart_toEndOf="@+id/tvZoneEasy"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        <TextView
+            android:id="@+id/tvZoneEasy"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_pill_blue"
+            android:gravity="center"
+            android:paddingVertical="10dp"
+            android:text="Basic\n(1pt)"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tvZoneAdvance"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Advance"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.776"
-        app:layout_constraintStart_toEndOf="@+id/tvZoneEasy"
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+        <TextView
+            android:id="@+id/tvZoneIntermediate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingVertical="10dp"
+            android:text="Int\n(2pt)"
+            android:textColor="#616161"
+            android:textSize="12sp" />
 
-    <Button
+        <TextView
+            android:id="@+id/tvZoneAdvance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingVertical="10dp"
+            android:text="Adv\n(3pt)"
+            android:textColor="#616161"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/tvComplete"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="@id/guidelineCol1"
+        app:layout_constraintEnd_toStartOf="@id/guidelineCol2"
+        app:layout_constraintTop_toBottomOf="@id/difficultySelector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:visibility="visible">
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@android:drawable/star_big_on"
+            app:tint="#1565C0" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="ROUTINE COMPLETE!"
+            android:textColor="#1565C0"
+            android:textSize="18sp"
+            android:textStyle="bold|italic" />
+    </LinearLayout>
+
+    <!-- ════ RIGHT — Buttons (wrap_content height, spread via chain) ════ -->
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnPerform"
-        android:layout_width="285dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="48dp"
-        android:text="Perform"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="#1565C0"
+        android:text="PERFORM"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:cornerRadius="10dp"
+        app:icon="@android:drawable/ic_media_play"
+        app:iconGravity="textStart"
+        app:iconTint="#FFFFFF"
+        app:layout_constraintBottom_toTopOf="@id/btnDeduction"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvZoneEasy" />
+        app:layout_constraintStart_toStartOf="@id/guidelineCol2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnDeduction"
-        android:layout_width="134dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="196dp"
-        android:text="Deduction"
+        style="@style/Widget.MaterialComponents.Button.TextButton"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="10dp"
+        android:backgroundTint="#FFEBEE"
+        android:text="DEDUCTION (-2.0)"
+        android:textColor="#D32F2F"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        app:cornerRadius="10dp"
+        app:strokeColor="#FFCDD2"
+        app:strokeWidth="1dp"
+        app:layout_constraintStart_toStartOf="@id/guidelineCol2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnPerform" />
+        app:layout_constraintTop_toBottomOf="@id/btnPerform"
+        app:layout_constraintBottom_toTopOf="@id/btnReset"
+        android:layout_marginTop="8dp" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnReset"
-        android:layout_width="134dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="48dp"
-        android:text="Reset"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
+        android:text="RESET"
+        android:textColor="#616161"
+        android:textSize="13sp"
+        app:cornerRadius="10dp"
+        app:icon="@android:drawable/ic_menu_rotate"
+        app:iconGravity="textStart"
+        app:iconTint="#5F5F5E"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnDeduction"
-        app:layout_constraintTop_toBottomOf="@+id/btnPerform" />
+        app:layout_constraintStart_toStartOf="@id/guidelineCol2"
+        app:layout_constraintTop_toBottomOf="@id/btnDeduction"
+        app:strokeColor="#BDBDBD" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
