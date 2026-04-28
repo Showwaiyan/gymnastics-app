@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GymScore Pro</string>
+
+    <string name="element_counter">အမျိုးအစား %1$d / ၁၀</string>
+
+    <string name="max_points">အများဆုံး: ၂၀ မှတ်</string>
+    <string name="deduction_badge">- ၂</string>
+    <string name="score_display">%1$d</string>
+
+    <string name="difficulty_label">ခက်ခဲမှုအဆင့်</string>
+    <string name="zone_basic">အခြေခံ\n(၁ မှတ်)</string>
+    <string name="zone_intermediate">အလယ်\n(၂ မှတ်)</string>
+    <string name="zone_advanced">အဆင့်မြင့်\n(၃ မှတ်)</string>
+
+    <string name="routine_complete">ပြီးဆုံးပါပြီ။</string>
+
+    <string name="btn_perform">စတင်မည်</string>
+    <string name="btn_deduction">- အမှတ်လျှော့</string>
+    <string name="btn_reset">ပြန်စရန်</string>
+
+</resources>

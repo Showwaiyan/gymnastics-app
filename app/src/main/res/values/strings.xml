@@ -1,3 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Gymnastics-app</string>
+    <string name="app_name">GymScore Pro</string>
+
+    <!-- Header -->
+    <string name="element_counter">Element %1$d / 10</string>
+
+    <!-- Score Circle -->
+    <string name="max_points">Max: 20 pts</string>
+    <string name="deduction_badge">- 2</string>
+    <string name="score_display">%1$d</string>
+
+    <!-- Difficulty Level -->
+    <string name="difficulty_label">DIFFICULTY LEVEL</string>
+    <string name="zone_basic">Basic\n(1pt)</string>
+    <string name="zone_intermediate">Int\n(2pt)</string>
+    <string name="zone_advanced">Adv\n(3pt)</string>
+
+    <!-- Routine Complete -->
+    <string name="routine_complete">ROUTINE COMPLETE!</string>
+
+    <!-- Buttons -->
+    <string name="btn_perform">PERFORM</string>
+    <string name="btn_deduction">– DEDUCTION (-2.0)</string>
+    <string name="btn_reset">RESET</string>
+
 </resources>
