@@ -5,130 +5,273 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F5F5F5"
     android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".MainActivity">
 
+    <!-- ── Header ── -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="App Logo" />
+        <!-- App logo placeholder (swap src to your actual drawable) -->
+        <ImageView
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:src="@android:drawable/ic_menu_compass"
+            app:tint="#1565C0" />
 
         <TextView
-            android:id="@+id/tvElement"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:text="Element counter" />
+            android:text="GymScore Pro"
+            android:textColor="#1565C0"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
+        <!-- Element counter chip -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="#E0E0E0"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp">
+
+            <TextView
+                android:id="@+id/tvElement"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="6dp"
+                android:text="Element 1 / 10"
+                android:textColor="#424242"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                tools:text="Element 3 / 10" />
+        </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
 
+    <!-- ── Score Circle ── -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tvScore"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Score Number" />
+        <FrameLayout
+            android:layout_width="200dp"
+            android:layout_height="200dp">
+
+            <!-- Outer ring drawn via shape drawable; swap to your circle_border_blue drawable -->
+            <View
+                android:id="@+id/scoreCircle"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/circle_border_blue" />
+
+            <TextView
+                android:id="@+id/tvScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="0"
+                android:textColor="#1565C0"
+                android:textSize="80sp"
+                android:textStyle="bold"
+                tools:text="6" />
+
+            <!-- Deduction badge – shown only when isDeductionTaken; toggle visibility from code -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDeductionBadge"
+                android:layout_width="80dp"
+                android:layout_height="34dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="4dp"
+                android:visibility="gone"
+                app:cardBackgroundColor="#C62828"
+                app:cardCornerRadius="17dp"
+                app:cardElevation="4dp"
+                tools:visibility="visible">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="- 2"
+                    android:textColor="#FFFFFF"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </com.google.android.material.card.MaterialCardView>
+        </FrameLayout>
 
         <TextView
-            android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="MaxPoint" />
+            android:layout_marginTop="12dp"
+            android:text="Max: 20 pts"
+            android:textColor="#757575"
+            android:textSize="14sp" />
     </LinearLayout>
 
+    <!-- ── Difficulty Level ── -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView4"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Difficulty Title" />
+            android:letterSpacing="0.12"
+            android:text="DIFFICULTY LEVEL"
+            android:textColor="#424242"
+            android:textSize="11sp"
+            android:textStyle="bold" />
 
+        <!-- Segmented selector container -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_rounded_border"
+            android:orientation="horizontal"
+            android:padding="4dp">
 
             <TextView
                 android:id="@+id/tvZoneEasy"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Easy Zone" />
+                android:background="@drawable/bg_pill_blue"
+                android:gravity="center"
+                android:paddingVertical="12dp"
+                android:text="Basic\n(1pt)"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tvZoneIntermediate"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Intermediate Zone" />
+                android:gravity="center"
+                android:paddingVertical="12dp"
+                android:text="Int\n(2pt)"
+                android:textColor="#616161"
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/tvZoneAdvance"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Advance Zone" />
+                android:gravity="center"
+                android:paddingVertical="12dp"
+                android:text="Adv\n(3pt)"
+                android:textColor="#616161"
+                android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
 
+    <!-- ── Routine Complete (spacer + message) ── -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:visibility="visible">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <TextView
+        <LinearLayout
             android:id="@+id/tvComplete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Complete Text" />
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <ImageView
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:src="@android:drawable/star_big_on"
+                app:tint="#1565C0" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="ROUTINE COMPLETE!"
+                android:textColor="#1565C0"
+                android:textSize="24sp"
+                android:textStyle="bold|italic" />
+        </LinearLayout>
     </LinearLayout>
 
+    <!-- ── Buttons ── -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnPerform"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Perform" />
+            android:layout_height="60dp"
+            android:layout_marginBottom="12dp"
+            android:backgroundTint="#1565C0"
+            android:text="PERFORM"
+            android:textColor="#FFFFFF"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:cornerRadius="12dp"
+            app:icon="@android:drawable/ic_media_play"
+            app:iconGravity="textStart"
+            app:iconTint="#FFFFFF" />
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="60dp"
             android:orientation="horizontal">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnDeduction"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:text="Deduction" />
+                android:backgroundTint="#FFEBEE"
+                android:text="– DEDUCTION (-2.0)"
+                android:textColor="#D32F2F"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:cornerRadius="12dp"
+                app:strokeColor="#FFCDD2"
+                app:strokeWidth="1dp" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnReset"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="Reset" />
+                android:text="RESET"
+                android:textColor="#616161"
+                android:textSize="13sp"
+                app:cornerRadius="12dp"
+                app:icon="@android:drawable/ic_menu_rotate"
+                app:iconGravity="textStart"
+                app:iconTint="#5F5F5E"
+                app:strokeColor="#BDBDBD" />
         </LinearLayout>
     </LinearLayout>
 
