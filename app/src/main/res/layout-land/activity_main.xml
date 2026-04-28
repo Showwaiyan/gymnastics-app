@@ -228,6 +228,7 @@
         <ImageView
             android:layout_width="32dp"
             android:layout_height="32dp"
+            android:contentDescription="Star"
             android:src="@android:drawable/star_big_on"
             app:tint="#1565C0" />
 

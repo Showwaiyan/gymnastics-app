@@ -17,24 +17,23 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <!-- App logo placeholder (swap src to your actual drawable) -->
         <ImageView
             android:layout_width="28dp"
             android:layout_height="28dp"
+            android:contentDescription="@string/app_name"
             android:src="@android:drawable/ic_menu_compass"
-            app:tint="#1565C0" />
+            app:tint="#1A62B9" />
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_weight="1"
-            android:text="GymScore Pro"
+            android:text="@string/app_name"
             android:textColor="#1565C0"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <!-- Element counter chip -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="14dp"
                 android:paddingVertical="6dp"
-                android:text="Element 1 / 10"
+                android:text="@string/app_name"
                 android:textColor="#424242"
                 android:textSize="13sp"
                 android:textStyle="bold"
@@ -68,7 +67,6 @@
             android:layout_width="200dp"
             android:layout_height="200dp">
 
-            <!-- Outer ring drawn via shape drawable; swap to your circle_border_blue drawable -->
             <View
                 android:id="@+id/scoreCircle"
                 android:layout_width="match_parent"
@@ -86,7 +84,6 @@
                 android:textStyle="bold"
                 tools:text="6" />
 
-            <!-- Deduction badge – shown only when isDeductionTaken; toggle visibility from code -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardDeductionBadge"
                 android:layout_width="80dp"
@@ -103,7 +100,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="- 2"
+                    android:text="@string/deduction_badge"
                     android:textColor="#FFFFFF"
                     android:textSize="13sp"
                     android:textStyle="bold" />
@@ -114,7 +111,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="Max: 20 pts"
+            android:text="@string/max_points"
             android:textColor="#757575"
             android:textSize="14sp" />
     </LinearLayout>
@@ -131,12 +128,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:letterSpacing="0.12"
-            android:text="DIFFICULTY LEVEL"
+            android:text="@string/difficulty_label"
             android:textColor="#424242"
             android:textSize="11sp"
             android:textStyle="bold" />
 
-        <!-- Segmented selector container -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -153,7 +149,7 @@
                 android:background="@drawable/bg_pill_blue"
                 android:gravity="center"
                 android:paddingVertical="12dp"
-                android:text="Basic\n(1pt)"
+                android:text="@string/zone_basic"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp"
                 android:textStyle="bold" />
@@ -165,7 +161,7 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:paddingVertical="12dp"
-                android:text="Int\n(2pt)"
+                android:text="@string/zone_intermediate"
                 android:textColor="#616161"
                 android:textSize="12sp" />
 
@@ -176,13 +172,13 @@
                 android:layout_weight="1"
                 android:gravity="center"
                 android:paddingVertical="12dp"
-                android:text="Adv\n(3pt)"
+                android:text="@string/zone_advanced"
                 android:textColor="#616161"
                 android:textSize="12sp" />
         </LinearLayout>
     </LinearLayout>
 
-    <!-- ── Routine Complete (spacer + message) ── -->
+    <!-- ── Routine Complete ── -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -202,6 +198,7 @@
             <ImageView
                 android:layout_width="52dp"
                 android:layout_height="52dp"
+                android:contentDescription="@string/routine_complete"
                 android:src="@android:drawable/star_big_on"
                 app:tint="#1565C0" />
 
@@ -209,7 +206,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="ROUTINE COMPLETE!"
+                android:text="@string/routine_complete"
                 android:textColor="#1565C0"
                 android:textSize="24sp"
                 android:textStyle="bold|italic" />
@@ -228,7 +225,7 @@
             android:layout_height="60dp"
             android:layout_marginBottom="12dp"
             android:backgroundTint="#1565C0"
-            android:text="PERFORM"
+            android:text="@string/btn_perform"
             android:textColor="#FFFFFF"
             android:textSize="15sp"
             android:textStyle="bold"
@@ -250,7 +247,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
                 android:backgroundTint="#FFEBEE"
-                android:text="– DEDUCTION (-2.0)"
+                android:text="@string/btn_deduction"
                 android:textColor="#D32F2F"
                 android:textSize="12sp"
                 android:textStyle="bold"
@@ -264,7 +261,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:text="RESET"
+                android:text="@string/btn_reset"
                 android:textColor="#616161"
                 android:textSize="13sp"
                 app:cornerRadius="12dp"
