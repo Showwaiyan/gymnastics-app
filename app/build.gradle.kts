@@ -10,9 +10,12 @@ android {
         }
     }
 
+    buildFeatures {
+        viewBinding = true
+    }
     defaultConfig {
         applicationId = "com.example.gymnastics_app"
-        minSdk = 34
+        minSdk = 33
         targetSdk = 36
         versionCode = 1
         versionName = "1.0"
