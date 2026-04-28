@@ -1,5 +1,7 @@
 package com.example.gymnastics_app
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -73,6 +75,8 @@ class MainActivity : AppCompatActivity() {
 
         // Zone Highlight
         highlightZone(result?.zone ?: lastZone)
+        highlightCircle(result?.zone ?: lastZone)
+
 
         binding.tvElement.text = "Element ${gymnastics.currentElement} / 10"
         binding.tvScore.text = gymnastics.score.toString()
@@ -87,27 +91,79 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun highlightZone(zone: Zone?) {
+
+        // Reset all zones to unselected state first
+        binding.tvZoneEasy.setBackgroundResource(0)
+        binding.tvZoneEasy.setTextColor(getColor(android.R.color.darker_gray))
+        binding.tvZoneEasy.setTypeface(null, android.graphics.Typeface.NORMAL)
+
+        binding.tvZoneIntermediate.setBackgroundResource(0)
+        binding.tvZoneIntermediate.setTextColor(getColor(android.R.color.darker_gray))
+        binding.tvZoneIntermediate.setTypeface(null, android.graphics.Typeface.NORMAL)
+
+        binding.tvZoneAdvance.setBackgroundResource(0)
+        binding.tvZoneAdvance.setTextColor(getColor(android.R.color.darker_gray))
+        binding.tvZoneAdvance.setTypeface(null, android.graphics.Typeface.NORMAL)
+
         when (zone) {
             Zone.EASY -> {
-                binding.tvZoneEasy.setBackgroundColor(getColor(android.R.color.holo_blue_light))
-                binding.tvZoneIntermediate.setBackgroundColor(getColor(android.R.color.white))
-                binding.tvZoneAdvance.setBackgroundColor(getColor(android.R.color.white))
+                binding.tvZoneEasy.setBackgroundResource(R.drawable.bg_pill_blue)
+                binding.tvZoneEasy.setTextColor(getColor(android.R.color.white))
+                binding.tvZoneEasy.setTypeface(null, android.graphics.Typeface.BOLD)
             }
             Zone.INTERMEDIATE -> {
-                binding.tvZoneIntermediate.setBackgroundColor(getColor(android.R.color.holo_green_light))
-                binding.tvZoneEasy.setBackgroundColor(getColor(android.R.color.white))
-                binding.tvZoneAdvance.setBackgroundColor(getColor(android.R.color.white))
+                binding.tvZoneIntermediate.setBackgroundResource(R.drawable.bg_pill_green)
+                binding.tvZoneIntermediate.setTextColor(getColor(android.R.color.white))
+                binding.tvZoneIntermediate.setTypeface(null, android.graphics.Typeface.BOLD)
             }
             Zone.ADVANCED -> {
-                binding.tvZoneAdvance.setBackgroundColor(getColor(android.R.color.holo_orange_light))
-                binding.tvZoneEasy.setBackgroundColor(getColor(android.R.color.white))
-                binding.tvZoneIntermediate.setBackgroundColor(getColor(android.R.color.white))
+                binding.tvZoneAdvance.setBackgroundResource(R.drawable.bg_pill_orange)
+                binding.tvZoneAdvance.setTextColor(getColor(android.R.color.white))
+                binding.tvZoneAdvance.setTypeface(null, android.graphics.Typeface.BOLD)
             }
             null -> {
-                binding.tvZoneEasy.setBackgroundColor(getColor(android.R.color.white))
-                binding.tvZoneIntermediate.setBackgroundColor(getColor(android.R.color.white))
-                binding.tvZoneAdvance.setBackgroundColor(getColor(android.R.color.white))
+                // all reset above
+                // due to code duplication and no needed
+                // null branch will be empty
             }
+        }
+    }
+
+    private fun highlightCircle(zone: Zone?) {
+        if (gymnastics.isDeductionTaken) {
+            // Deduction state: red border + red score text
+            binding.scoreCircle?.setBackgroundResource(R.drawable.circle_border_red)
+            binding.tvScore.setTextColor(getColor(android.R.color.holo_red_dark))
+            binding.cardDeductionBadge?.visibility = View.VISIBLE
+        } else {
+            // Match circle color to current zone
+            binding.cardDeductionBadge?.visibility = View.GONE
+            when (zone) {
+                Zone.EASY -> {
+                    binding.scoreCircle?.setBackgroundResource(R.drawable.circle_border_blue)
+                    binding.tvScore.setTextColor(getColor(android.R.color.holo_blue_dark))
+                }
+                Zone.INTERMEDIATE -> {
+                    binding.scoreCircle?.setBackgroundResource(R.drawable.circle_border_green)
+                    binding.tvScore.setTextColor(getColor(android.R.color.holo_green_dark))
+                }
+                Zone.ADVANCED -> {
+                    binding.scoreCircle?.setBackgroundResource(R.drawable.circle_border_orange)
+                    binding.tvScore.setTextColor(getColor(android.R.color.holo_orange_dark))
+                }
+                null -> {
+                    binding.scoreCircle?.setBackgroundResource(R.drawable.circle_border_blue)
+                    binding.tvScore.setTextColor(getColor(android.R.color.holo_blue_dark))
+                }
+            }
+
+            // Change perform btn color
+            //when (zone) {
+            //    Zone.EASY -> binding.btnPerform.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#1565C0"))
+            //    Zone.INTERMEDIATE -> binding.btnPerform.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#2E7D32"))
+            //    Zone.ADVANCED -> binding.btnPerform.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#E65100"))
+            //    null -> binding.btnPerform.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#1565C0"))
+            //}
         }
     }
 }
