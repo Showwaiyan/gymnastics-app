@@ -3,7 +3,7 @@ package com.example.gymnastics_app
 enum class Zone(val range: IntRange, val points: Int) {
     EASY(1..3, 1),
     INTERMEDIATE(4..7, 2),
-    ADVANCED(8..10, 3)
+    ADVANCED(8..10, 3);
 }
 
 data class PerformResult(val success: Boolean, val zone: Zone?, val isComplete: Boolean)
@@ -17,12 +17,13 @@ class Gymnastics {
         private set
 
     fun perform(): PerformResult {
-        val zone: Zone? = Zone.entries.find { currentElement in it.range }
-        if (isDeductionTaken || zone == null) return PerformResult(false, null, false)
+        val currentZone: Zone? = Zone.entries.find { currentElement in it.range }
+        currentZone?.points?.let { score = (score+it).coerceAtMost(20) }
+        if (isDeductionTaken || currentZone == null) return PerformResult(false, null, false)
 
-        score = (score+zone.points).coerceAtMost(20)
         currentElement = (currentElement+1).coerceAtMost(10)
-        return PerformResult(true, zone, currentElement == 10 && score == 20)
+        val newZone: Zone? = Zone.entries.find { currentElement in it.range }
+        return PerformResult(true, newZone, currentElement == 10 && score == 20)
     }
     fun applyDeduction(): Boolean {
         if (currentElement == 1 || isDeductionTaken || score == 20) return false
@@ -30,9 +31,16 @@ class Gymnastics {
         isDeductionTaken = true
         return true
     }
-    fun reset() {
+    fun reset(): Boolean {
         score = 0
         currentElement = 1
         isDeductionTaken = false
+        return true
+    }
+
+    fun restore(score: Int, currentElement: Int, isDeductionTaken: Boolean) {
+        this.score = score
+        this.currentElement = currentElement
+        this.isDeductionTaken = isDeductionTaken
     }
 }
