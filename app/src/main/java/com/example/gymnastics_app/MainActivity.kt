@@ -51,13 +51,15 @@ class MainActivity : AppCompatActivity() {
             Log.d("gymnastics", "Perform Button Clicked!")
             val result = gymnastics.perform()
             updateUI(result)
+            Log.d("gymnastics", "Score: ${gymnastics.score}, Element: ${gymnastics.currentElement}")
         }
 
         binding.btnDeduction.setOnClickListener {
-            Log.d("gymnastics", "Deduciton Button Clicked!")
+            Log.d("gymnastics", "Deduction Button Clicked!")
             gymnastics.applyDeduction()
             this.isComplete = false
             updateUI(null)
+            Log.d("gymnastics", "Score: ${gymnastics.score}, Element: ${gymnastics.currentElement}")
         }
 
         binding.btnReset.setOnClickListener {
@@ -66,6 +68,7 @@ class MainActivity : AppCompatActivity() {
             this.isComplete = false
             lastZone = null
             updateUI(null)
+            Log.d("gymnastics", "Score: ${gymnastics.score}, Element: ${gymnastics.currentElement}")
         }
     }
 
@@ -78,8 +81,8 @@ class MainActivity : AppCompatActivity() {
         highlightCircle(result?.zone ?: lastZone)
 
 
-        binding.tvElement.text = "Element ${gymnastics.currentElement} / 10"
-        binding.tvScore.text = gymnastics.score.toString()
+        binding.tvElement.text = getString(R.string.element_counter, gymnastics.currentElement)
+        binding.tvScore.text = getString(R.string.score_display, gymnastics.score)
 
         // Buttons Enable and Disable
         binding.btnPerform.isEnabled = !gymnastics.isDeductionTaken && !this.isComplete
@@ -132,27 +135,27 @@ class MainActivity : AppCompatActivity() {
     private fun highlightCircle(zone: Zone?) {
         if (gymnastics.isDeductionTaken) {
             // Deduction state: red border + red score text
-            binding.scoreCircle?.setBackgroundResource(R.drawable.circle_border_red)
+            binding.scoreCircle.setBackgroundResource(R.drawable.circle_border_red)
             binding.tvScore.setTextColor(getColor(android.R.color.holo_red_dark))
-            binding.cardDeductionBadge?.visibility = View.VISIBLE
+            binding.cardDeductionBadge.visibility = View.VISIBLE
         } else {
             // Match circle color to current zone
-            binding.cardDeductionBadge?.visibility = View.GONE
+            binding.cardDeductionBadge.visibility = View.GONE
             when (zone) {
                 Zone.EASY -> {
-                    binding.scoreCircle?.setBackgroundResource(R.drawable.circle_border_blue)
+                    binding.scoreCircle.setBackgroundResource(R.drawable.circle_border_blue)
                     binding.tvScore.setTextColor(getColor(android.R.color.holo_blue_dark))
                 }
                 Zone.INTERMEDIATE -> {
-                    binding.scoreCircle?.setBackgroundResource(R.drawable.circle_border_green)
+                    binding.scoreCircle.setBackgroundResource(R.drawable.circle_border_green)
                     binding.tvScore.setTextColor(getColor(android.R.color.holo_green_dark))
                 }
                 Zone.ADVANCED -> {
-                    binding.scoreCircle?.setBackgroundResource(R.drawable.circle_border_orange)
+                    binding.scoreCircle.setBackgroundResource(R.drawable.circle_border_orange)
                     binding.tvScore.setTextColor(getColor(android.R.color.holo_orange_dark))
                 }
                 null -> {
-                    binding.scoreCircle?.setBackgroundResource(R.drawable.circle_border_blue)
+                    binding.scoreCircle.setBackgroundResource(R.drawable.circle_border_blue)
                     binding.tvScore.setTextColor(getColor(android.R.color.holo_blue_dark))
                 }
             }
