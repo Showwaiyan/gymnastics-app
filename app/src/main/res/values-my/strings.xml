@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">GymScore Pro</string>
+    <string name="app_name">Gymnastics App</string>
 
     <string name="element_counter">အမျိုးအစား %1$d / ၁၀</string>
 
