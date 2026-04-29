@@ -18,8 +18,8 @@ class Gymnastics {
 
     fun perform(): PerformResult {
         val currentZone: Zone? = Zone.entries.find { currentElement in it.range }
-        currentZone?.points?.let { score = (score+it).coerceAtMost(20) }
         if (isDeductionTaken || currentZone == null) return PerformResult(false, null, false)
+        currentZone.points.let { score = (score+it).coerceAtMost(20) }
 
         currentElement = (currentElement+1).coerceAtMost(10)
         val newZone: Zone? = Zone.entries.find { currentElement in it.range }
