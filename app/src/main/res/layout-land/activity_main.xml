@@ -33,6 +33,7 @@
         android:id="@+id/ivLogo"
         android:layout_width="22dp"
         android:layout_height="22dp"
+        android:contentDescription="@string/app_name"
         android:src="@android:drawable/ic_menu_compass"
         app:tint="#1565C0"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +44,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="6dp"
-        android:text="GymScore Pro"
+        android:text="@string/app_name"
         android:textColor="#1565C0"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -68,12 +69,12 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="14dp"
             android:paddingVertical="5dp"
-            android:text="Element 1 / 10"
+            android:text="@string/app_name"
             android:textColor="#424242"
             android:textSize="12sp"
             android:textStyle="bold"
             android:letterSpacing="0.08"
-            tools:text="ELEMENT 3 / 10" />
+            tools:text="Element 3 / 10" />
     </com.google.android.material.card.MaterialCardView>
 
     <!-- ════ LEFT — Score Circle ════ -->
@@ -124,7 +125,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="-0.5"
+            android:text="@string/deduction_badge"
             android:textColor="#FFFFFF"
             android:textSize="11sp"
             android:textStyle="bold" />
@@ -135,7 +136,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="MAX: 20 PTS"
+        android:text="@string/max_points"
         android:textColor="#757575"
         android:textSize="11sp"
         android:letterSpacing="0.08"
@@ -152,7 +153,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:letterSpacing="0.12"
-        android:text="DIFFICULTY LEVEL"
+        android:text="@string/difficulty_label"
         android:textColor="#424242"
         android:textSize="11sp"
         android:textStyle="bold"
@@ -182,7 +183,7 @@
             android:background="@drawable/bg_pill_blue"
             android:gravity="center"
             android:paddingVertical="10dp"
-            android:text="Basic\n(1pt)"
+            android:text="@string/zone_basic"
             android:textColor="#FFFFFF"
             android:textSize="12sp"
             android:textStyle="bold" />
@@ -194,7 +195,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:paddingVertical="10dp"
-            android:text="Int\n(2pt)"
+            android:text="@string/zone_intermediate"
             android:textColor="#616161"
             android:textSize="12sp" />
 
@@ -205,7 +206,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:paddingVertical="10dp"
-            android:text="Adv\n(3pt)"
+            android:text="@string/zone_advanced"
             android:textColor="#616161"
             android:textSize="12sp" />
     </LinearLayout>
@@ -228,7 +229,7 @@
         <ImageView
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:contentDescription="Star"
+            android:contentDescription="@string/routine_complete"
             android:src="@android:drawable/star_big_on"
             app:tint="#1565C0" />
 
@@ -236,13 +237,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="ROUTINE COMPLETE!"
+            android:text="@string/routine_complete"
             android:textColor="#1565C0"
             android:textSize="18sp"
             android:textStyle="bold|italic" />
     </LinearLayout>
 
-    <!-- ════ RIGHT — Buttons (wrap_content height, spread via chain) ════ -->
+    <!-- ════ RIGHT — Buttons ════ -->
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnPerform"
@@ -250,7 +251,7 @@
         android:layout_height="52dp"
         android:layout_marginStart="10dp"
         android:backgroundTint="#1565C0"
-        android:text="PERFORM"
+        android:text="@string/btn_perform"
         android:textColor="#FFFFFF"
         android:textSize="13sp"
         android:textStyle="bold"
@@ -270,8 +271,9 @@
         android:layout_width="0dp"
         android:layout_height="52dp"
         android:layout_marginStart="10dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#FFEBEE"
-        android:text="DEDUCTION (-2.0)"
+        android:text="@string/btn_deduction"
         android:textColor="#D32F2F"
         android:textSize="11sp"
         android:textStyle="bold"
@@ -281,8 +283,7 @@
         app:layout_constraintStart_toStartOf="@id/guidelineCol2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btnPerform"
-        app:layout_constraintBottom_toTopOf="@id/btnReset"
-        android:layout_marginTop="8dp" />
+        app:layout_constraintBottom_toTopOf="@id/btnReset" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btnReset"
@@ -291,7 +292,7 @@
         android:layout_height="52dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
-        android:text="RESET"
+        android:text="@string/btn_reset"
         android:textColor="#616161"
         android:textSize="13sp"
         app:cornerRadius="10dp"
