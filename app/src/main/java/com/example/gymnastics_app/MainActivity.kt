@@ -81,6 +81,7 @@ class MainActivity : AppCompatActivity() {
         highlightCircle(result?.zone ?: lastZone)
 
 
+        // update score and element
         binding.tvElement.text = getString(R.string.element_counter, gymnastics.currentElement)
         binding.tvScore.text = getString(R.string.score_display, gymnastics.score)
 
@@ -159,14 +160,6 @@ class MainActivity : AppCompatActivity() {
                     binding.tvScore.setTextColor(getColor(android.R.color.holo_blue_dark))
                 }
             }
-
-            // Change perform btn color
-            //when (zone) {
-            //    Zone.EASY -> binding.btnPerform.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#1565C0"))
-            //    Zone.INTERMEDIATE -> binding.btnPerform.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#2E7D32"))
-            //    Zone.ADVANCED -> binding.btnPerform.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#E65100"))
-            //    null -> binding.btnPerform.backgroundTintList = ColorStateList.valueOf(Color.parseColor("#1565C0"))
-            //}
         }
     }
 }

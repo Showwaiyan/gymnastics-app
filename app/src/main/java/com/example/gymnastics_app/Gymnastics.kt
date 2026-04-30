@@ -17,7 +17,7 @@ class Gymnastics {
         private set
 
     fun perform(): PerformResult {
-        val currentZone: Zone? = Zone.entries.find { currentElement in it.range }
+        val currentZone: Zone? = Zone.entries.find { currentElement in it.range } // check current zone first in order to get actual zone point
         if (isDeductionTaken || currentZone == null) return PerformResult(false, null, false)
         currentZone.points.let { score = (score+it).coerceAtMost(20) }
 
